@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.kayac.unityandroidplugin.GaritaQuestApplication;
+package com.agungpratama.ziputil;
 
 public final class R {
     public static final class attr {

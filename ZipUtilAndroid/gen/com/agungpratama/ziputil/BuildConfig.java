@@ -1,5 +1,5 @@
 /** Automatically generated file. DO NOT MODIFY */
-package com.kayac.unityandroidplugin.GaritaQuestApplication;
+package com.agungpratama.ziputil;
 
 public final class BuildConfig {
     public final static boolean DEBUG = true;

@@ -8,6 +8,9 @@ import com.agungpratama.zip.lib.UnzipHelper.UnzipHelperArgs;
 import com.unity3d.player.UnityPlayer;
 
 public class UnzipUnityInterface {
+	public final static String TAG = UnzipUnityInterface.class.getSimpleName();
+	public final static String UNITY_OBJ_NAME = "UnzipManager";
+	
 	public static int startUnzip(String zipFile, String tempPath){
 		final String zipPath = zipFile;
 		final String destinationPath = tempPath;
@@ -38,35 +41,35 @@ public class UnzipUnityInterface {
 	}
 	
 	public static void unzipProgressCallback(final float progress){
-		//Log.d("GARITA_AGUNG", "unzipProgressCallback:"+"progress:"+(progress*100));
+		Log.d(TAG, "unzipProgressCallback:"+"progress:"+(progress*100));
 		UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
 			
 			@Override
 			public void run() {
-				UnityPlayer.UnitySendMessage("UnzipManager", "OnUnzipProgressCallback", progress+"");
+				UnityPlayer.UnitySendMessage(UNITY_OBJ_NAME, "OnUnzipProgressCallback", progress+"");
 			}
 		});
 		
 	}
 	
 	public static void unzipFinishedCallback(final int status){
-		//Log.d("GARITA_AGUNG", "unzipFinishedCallback:"+status);
+		Log.d(TAG, "unzipFinishedCallback:"+status);
 		UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
 
 			@Override
 			public void run() {
-				UnityPlayer.UnitySendMessage("UnzipManager", "OnUnzipFinishedCallback", status+"");
+				UnityPlayer.UnitySendMessage(UNITY_OBJ_NAME, "OnUnzipFinishedCallback", status+"");
 			}
 		});
 	}
 	
 	public static void unzipFileDecompressedCallback(final String name, final int status){
-		//Log.d("GARITA_AGUNG", "unzipFileDecompressedCallback:"+name+" status:"+status);
+		Log.d(TAG, "unzipFileDecompressedCallback:"+name+" status:"+status);
 		UnityPlayer.currentActivity.runOnUiThread(new Runnable() {
 			
 			@Override
 			public void run() {
-		UnityPlayer.UnitySendMessage("UnzipManager", "OnUnzipFileDecompressedCallback", name+";;;"+status);
+		UnityPlayer.UnitySendMessage(UNITY_OBJ_NAME, "OnUnzipFileDecompressedCallback", name+";;;"+status);
 			}
 });
 	}
